@@ -5,7 +5,7 @@ DOCKER_ENGINE := $(shell command -v docker 2> /dev/null)
 DOCKER_COMPOSE := $(shell command -v docker-compose 2> /dev/null)
 VAGRANT := $(shell command -v vagrant 2> /dev/null)
 VIRTUALBOX := $(shell command -v virtualbox 2> /dev/null)
-VAGRANT_SALT := $(shell vagrant plugin list | grep salt 2> /dev/null)
+VAGRANT_SALT := $(shell vagrant plugin list 2> /dev/null | grep salt)
 
 install_docker:
 ifeq ($(UNAME_S), Darwin)
@@ -58,7 +58,7 @@ ifeq ($(UNAME_S),Darwin)
 	eval "$(docker-machine env salt)"
 endif
 	docker-compose up -d
-	docker exec -it saltpoc_master_1 bash
+	docker exec -it salttest_master_1 bash
 
 build:
 ifeq ($(UNAME_S),Darwin)
