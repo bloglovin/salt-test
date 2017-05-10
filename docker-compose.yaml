@@ -1,0 +1,36 @@
+version: '2'
+services:
+  master:
+    image: bloglovin/saltstack:latest
+    environment:
+      SALT_USE: master
+      SALT_NAME: salt-master
+      SALT_GRAINS: "{'test': 'test'}"
+      LOG_LEVEL: debug
+    hostname: salt-master
+    expose:
+      - "4505"
+      - "4506"
+      - "8000"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/srv/salt/:rw
+  minion1:
+    image: bloglovin/saltstack:latest
+    links:
+     - master
+    environment:
+      SALT_USE: minion
+      SALT_NAME: web01
+      SALT_GRAINS: "{'test': 'test'}"
+    hostname: web01
+  minion2:
+    image: bloglovin/saltstack:latest
+    links:
+     - master
+    environment:
+      SALT_USE: minion
+      SALT_NAME: ship01
+      SALT_GRAINS: "{'test': 'test'}"
+    hostname: ship01
