@@ -5,14 +5,14 @@ Welcome to Salt Test!
 
 ## Task
 
-1. For this project
-2. Use SaltStack stub to automate the process of granting / revoking SSH access to a group of servers instances to a new developer.
+1. Fork this project
+2. Extend the provided SaltStack stub to automate the process of granting / revoking SSH access to a new developer on a group of server instances.
 3. Create a pull request
 
 ## Requirements
 
 - Use a feature branch for all of your work.
-- Test you code (`salt web01 state.apply test=True` is always a good start)
+- Test your code (`salt web01 state.apply test=True` is always a good start)
 
 ## Get started
 
